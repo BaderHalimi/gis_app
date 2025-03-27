@@ -73,8 +73,8 @@
                                     class="px-6 text-center font-semibold py-4 text-sm text-gray-800 dark:text-gray-200">
                                     {{ $station->lng }}</td>
                                 <td style="padding:0.5rem 0;" class="px-6 text-center font-semibold py-4 space-x-2">
-                                    <a href="{{ route('stations.show', $station) }}"
-                                        class="inline-block px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-lg shadow">View</a>
+                                    {{-- <a href="{{ route('stations.show', $station) }}"
+                                        class="inline-block px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-lg shadow">View</a> --}}
                                     <a href="{{ route('stations.edit', $station) }}"
                                         class="inline-block px-3 py-1 bg-yellow-500 hover:bg-yellow-600 text-white text-sm rounded-lg shadow">Edit</a>
                                     <form id="delete-form-{{ $station->id }}"

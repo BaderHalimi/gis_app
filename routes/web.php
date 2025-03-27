@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/stations/{station}', [StationController::class, 'destroy'])->name('stations.destroy');
 });
 Route::get('/stations', function () {
-    $stations = Station::all(['id', 'name', 'lat', 'lng', 'type']);
+    $stations = Station::all(['id', 'name', 'lat', 'lng', 'type','address','description','prices','images']);
 
     $grouped = $stations->groupBy('type');
 

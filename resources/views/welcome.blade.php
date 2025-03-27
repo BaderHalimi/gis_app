@@ -133,15 +133,14 @@
                             } catch (e) {
                                 images = [];
                             }
+                            let carouselItems = '';
                             if (images != null) {
-                                let carouselItems = images.map((src, i) => `
+                                carouselItems = images.map((src, i) => `
                                 <div class="carousel-item ${i === 0 ? 'active' : ''}">
                                     <img src="storage/${src}" class="d-block w-100" style="max-height: 250px; object-fit: cover;" alt="صورة">
                                 </div>`).join('');
-                                let pricesList = 'لا يوجد أسعار';
-                            }else{
-                                let carouselItems = '';
                             }
+                            let pricesList = 'لا يوجد أسعار';
 
                             if (nearestLocation.prices && nearestLocation.prices.trim() !== '') {
                                 const prices = nearestLocation.prices

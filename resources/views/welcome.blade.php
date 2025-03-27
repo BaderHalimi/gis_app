@@ -139,6 +139,8 @@
                                     <img src="storage/${src}" class="d-block w-100" style="max-height: 250px; object-fit: cover;" alt="صورة">
                                 </div>`).join('');
                                 let pricesList = 'لا يوجد أسعار';
+                            }else{
+                                let carouselItems = '';
                             }
 
                             if (nearestLocation.prices && nearestLocation.prices.trim() !== '') {

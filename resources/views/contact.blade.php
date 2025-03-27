@@ -13,7 +13,7 @@
 
     <header class="container my-4">
         <nav class="d-flex justify-content-between align-items-center">
-            <a href="index.html" class="btn btn-outline-light">الصفحة الرئيسية</a>
+            <a href="{{route('home')}}" class="btn btn-outline-light">الصفحة الرئيسية</a>
             <h1 class="h5 m-0 text-center flex-grow-1">
                 استخدام نظم المعلومات الجغرافية في توزيع وايجاد محطات الوقود في محافظات قطاع غزة
             </h1>

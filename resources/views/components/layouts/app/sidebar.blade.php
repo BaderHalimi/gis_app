@@ -15,6 +15,14 @@
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="map-pin" :href="route('stations.index')" :current="request()->routeIs('stations.index')" wire:navigate>{{ __('Stations') }}</flux:navlist.item>
+                    <flux:navlist.item
+                        icon="inbox"
+                        :href="route('messages.index')"
+                        :current="request()->routeIs('messages.index')"
+                        wire:navigate>
+                        {{ __('Messages') }}
+                    </flux:navlist.item>
+
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -127,7 +135,7 @@
         </flux:header>
 
         {{ $slot }}
-        
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @fluxScripts
     </body>

@@ -13,7 +13,7 @@
 
     <header class="container my-4">
         <nav class="d-flex justify-content-between align-items-center">
-            <a href="{{route('home')}}" class="btn btn-outline-light">الصفحة الرئيسية</a>
+            <a href="{{ route('home') }}" class="btn btn-outline-light">الصفحة الرئيسية</a>
             <h1 class="h5 m-0 text-center flex-grow-1">
                 استخدام نظم المعلومات الجغرافية في توزيع وايجاد محطات الوقود في محافظات قطاع غزة
             </h1>
@@ -23,21 +23,31 @@
     <main class="container flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
-                <div class="card bg-light text-dark shadow mb-4">
+                <div class="card bg-dark text-light border-0 mb-4">
                     <div class="card-body">
-                        <h2 class="card-title text-center text-dark mb-4">💬 التواصل والدعم الفني</h2>
-                        <form>
+                        <h2 class="card-title text-center mb-4">💬 التواصل والدعم الفني</h2>
+                        @if (session('message'))
+                            <div class="alert alert-success text-center">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                        <form method="POST" action="{{ route('messages.store') }}">
+                            @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">الاسم</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="أدخل اسمك" required>
+                                <input type="text" id="name" name="name"
+                                    class="form-control bg-dark text-light" placeholder="أدخل اسمك" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">البريد الإلكتروني</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                                <input type="email" id="email" name="email"
+                                    class="form-control bg-dark text-light" placeholder="أدخل بريدك الإلكتروني"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label">الرسالة</label>
-                                <textarea id="message" name="message" class="form-control" rows="6" placeholder="أدخل رسالتك" required></textarea>
+                                <textarea id="message" name="message" class="form-control bg-dark text-light" rows="6" placeholder="أدخل رسالتك"
+                                    required></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-danger w-50">إرسال</button>
@@ -46,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="card bg-light text-dark shadow">
+                {{-- <div class="card bg-light text-dark shadow">
                     <div class="card-body">
                         <h3 class="text-center text-dark mb-3">📋 سجل الرسائل</h3>
                         <div class="table-responsive">
@@ -65,7 +75,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

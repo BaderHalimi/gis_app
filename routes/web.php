@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\StationController;
 use App\Models\Station;
 use Illuminate\Support\Facades\Route;
@@ -11,10 +12,11 @@ Route::get('/', function () {
 Route::get('/contact_us.html', function () {
     return view('contact');
 })->name('contact');
+Route::post('/about_us.html', [MessageController::class,'store'])->name('messages.store');
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+->middleware(['auth', 'verified'])
+->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -29,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/stations/{station}/edit', [StationController::class, 'edit'])->name('stations.edit');
     Route::put('/stations/{station}', [StationController::class, 'update'])->name('stations.update');
     Route::delete('/stations/{station}', [StationController::class, 'destroy'])->name('stations.destroy');
+    Route::get('/messages', [MessageController::class,'index'])->name('messages.index');
 });
 Route::get('/stations', function () {
     $stations = Station::all(['id', 'name', 'lat', 'lng', 'type','address','description','prices','images']);

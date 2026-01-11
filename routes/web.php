@@ -9,10 +9,10 @@ use Livewire\Volt\Volt;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-Route::get('/contact_us.html', function () {
+Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-Route::post('/about_us.html', [MessageController::class,'store'])->name('messages.store');
+Route::post('/contact', [MessageController::class,'store'])->name('messages.store');
 
 Route::view('dashboard', 'dashboard')
 ->middleware(['auth', 'verified'])

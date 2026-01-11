@@ -409,6 +409,33 @@
         .carousel-item img {
             border-radius: 16px 16px 0 0;
         }
+
+        /* Close Button */
+        .close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            background: rgba(239, 68, 68, 0.4);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .close-btn i {
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -497,8 +524,8 @@
                         <h5 class="mb-0" style="color: rgba(255,255,255,0.7);">
                             <i class="fas fa-info-circle me-2"></i>نتيجة البحث
                         </h5>
-                        <button class="btn btn-sm btn-outline-light" id="close-results" title="إغلاق">
-                            <i class="fas fa-times"></i>
+                        <button class="close-btn" id="close-results" title="إغلاق">
+                            <i class="fas fa-xmark"></i>
                         </button>
                     </div>
                     <div id="output"></div>
@@ -764,6 +791,13 @@
             setTimeout(() => {
                 google.maps.event.trigger(map, 'resize');
             }, 300);
+
+            // التمرير التلقائي للنتائج على الموبايل فقط
+            if (window.innerWidth < 992) {
+                setTimeout(() => {
+                    resultsCol.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 350);
+            }
         }
 
         // دالة لإخفاء لوحة النتائج

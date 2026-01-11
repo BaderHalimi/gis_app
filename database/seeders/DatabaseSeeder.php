@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // هذه القيم تقريبية لمنطقة غزة
         $lat = 31.0 + ($y - 75000) / 111000;
         $lng = 34.2 + ($x - 78000) / 95000;
-        
+
         return [round($lat, 6), round($lng, 6)];
     }
 

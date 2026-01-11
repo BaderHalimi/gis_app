@@ -391,7 +391,7 @@
                 @if (Route::has('login'))
                     <nav class="d-flex gap-2">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="nav-btn">
+                            <a href="{{ url('/admin') }}" class="nav-btn">
                                 <i class="fas fa-tachometer-alt me-2"></i>لوحة التحكم
                             </a>
                         @else

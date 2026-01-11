@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // إنشاء حساب الأدمن
+        User::updateOrCreate(
+            ['email' => 'admin@gis.com'],
+            [
+                'name' => 'مدير النظام',
+                'email' => 'admin@gis.com',
+                'password' => Hash::make('admin123'),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->command->info('✅ تم إنشاء حساب الأدمن:');
+        $this->command->info('   البريد: admin@gis.com');
+        $this->command->info('   كلمة المرور: admin123');
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التواصل والدعم الفني - GIS Navigator</title>
+    <title>التواصل والدعم الفني - {{ config('app.name') }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/icon.png') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -284,7 +284,7 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{{ route('home') }}" class="logo-text">
-                    <i class="fas fa-map-marked-alt me-2"></i>GIS Navigator
+                    <i class="fas fa-map-marked-alt me-2"></i>{{ config('app.name') }}
                 </a>
                 <a href="{{ route('home') }}" class="nav-btn">
                     <i class="fas fa-home me-2"></i>الصفحة الرئيسية
@@ -379,7 +379,7 @@
                             <div class="info-card">
                                 <i class="fas fa-envelope"></i>
                                 <h5>البريد الإلكتروني</h5>
-                                <p>support@gis-navigator.ps</p>
+                                <p><a class="text-white" style="text-decoration: none;" href="mailto:skouhail@ucas.edu.ps">skouhail@ucas.edu.ps</a></p>
                             </div>
                         </div>
                     </div>

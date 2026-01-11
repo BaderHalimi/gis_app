@@ -49,6 +49,16 @@ class StationResource extends Resource
                                 'fire' => 'دفاع مدني',
                             ])
                             ->native(false),
+                        Forms\Components\Select::make('status')
+                            ->label('حالة المحطة')
+                            ->required()
+                            ->options([
+                                'operational' => 'سليمة - تعمل',
+                                'damaged_operational' => 'متضررة - تعمل',
+                                'damaged_non_operational' => 'متضررة - لا تعمل',
+                            ])
+                            ->default('operational')
+                            ->native(false),
                         Forms\Components\TextInput::make('address')
                             ->label('العنوان')
                             ->maxLength(255)
@@ -122,6 +132,19 @@ class StationResource extends Resource
                         'warning' => 'petrol',
                         'danger' => 'fire',
                     ]),
+                Tables\Columns\BadgeColumn::make('status')
+                    ->label('الحالة')
+                    ->formatStateUsing(fn (?string $state): string => match ($state) {
+                        'operational' => 'سليمة - تعمل',
+                        'damaged_operational' => 'متضررة - تعمل',
+                        'damaged_non_operational' => 'متضررة - لا تعمل',
+                        default => $state ?? 'غير محدد',
+                    })
+                    ->colors([
+                        'success' => 'operational',
+                        'warning' => 'damaged_operational',
+                        'danger' => 'damaged_non_operational',
+                    ]),
                 Tables\Columns\TextColumn::make('address')
                     ->label('العنوان')
                     ->searchable()
@@ -154,6 +177,13 @@ class StationResource extends Resource
                         'gas' => 'محطة غاز',
                         'petrol' => 'محطة بترول',
                         'fire' => 'دفاع مدني',
+                    ]),
+                Tables\Filters\SelectFilter::make('status')
+                    ->label('الحالة')
+                    ->options([
+                        'operational' => 'سليمة - تعمل',
+                        'damaged_operational' => 'متضررة - تعمل',
+                        'damaged_non_operational' => 'متضررة - لا تعمل',
                     ]),
             ])
             ->actions([

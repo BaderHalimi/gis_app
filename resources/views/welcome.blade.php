@@ -264,6 +264,38 @@
             color: #fff;
         }
 
+        /* Status Badge */
+        .status-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .status-secondary {
+            background: rgba(156, 163, 175, 0.2);
+            color: #9ca3af;
+            border: 1px solid rgba(156, 163, 175, 0.3);
+        }
+
         .result-card .info-item {
             display: flex;
             align-items: center;
@@ -581,6 +613,26 @@
                                 }
                             }
 
+                            // تحديد حالة المحطة
+                            let statusText = 'غير محدد';
+                            let statusClass = 'secondary';
+                            if (nearestLocation.status) {
+                                switch(nearestLocation.status) {
+                                    case 'operational':
+                                        statusText = 'سليمة - تعمل';
+                                        statusClass = 'success';
+                                        break;
+                                    case 'damaged_operational':
+                                        statusText = 'متضررة - تعمل';
+                                        statusClass = 'warning';
+                                        break;
+                                    case 'damaged_non_operational':
+                                        statusText = 'متضررة - لا تعمل';
+                                        statusClass = 'danger';
+                                        break;
+                                }
+                            }
+
                             document.getElementById('output').innerHTML = `
                                 <div class="result-card">
                                     ${carouselItems ? `
@@ -596,7 +648,10 @@
                                         </button>
                                     </div>` : ''}
                                     <div class="card-body">
-                                        <h5 class="card-title">${nearestLocation.name}</h5>
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h5 class="card-title mb-0">${nearestLocation.name}</h5>
+                                            <span class="status-badge status-${statusClass}">${statusText}</span>
+                                        </div>
                                         <div class="info-item">
                                             <i class="fas fa-route"></i>
                                             <span>المسافة: <strong>${shortestDistance.toFixed(2)} كم</strong></span>

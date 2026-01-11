@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/messages', [MessageController::class,'index'])->name('messages.index');
 });
 Route::get('/stations', function () {
-    $stations = Station::all(['id', 'name', 'lat', 'lng', 'type','address','description','prices','images']);
+    $stations = Station::all(['id', 'name', 'lat', 'lng', 'type', 'status', 'address', 'description', 'prices', 'images']);
 
     $grouped = $stations->groupBy('type');
 

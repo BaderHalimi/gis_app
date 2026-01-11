@@ -18,13 +18,13 @@ class StationResource extends Resource
     protected static ?string $model = Station::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map-pin';
-    
+
     protected static ?string $navigationLabel = 'المحطات';
-    
+
     protected static ?string $modelLabel = 'محطة';
-    
+
     protected static ?string $pluralModelLabel = 'المحطات';
-    
+
     protected static ?string $navigationGroup = 'إدارة المحطات';
 
     public static function form(Form $form): Form
@@ -44,9 +44,9 @@ class StationResource extends Resource
                             ->label('نوع المحطة')
                             ->required()
                             ->options([
-                                'gas' => '⛽ محطة غاز',
-                                'petrol' => '🛢️ محطة بترول',
-                                'fire' => '🚒 دفاع مدني',
+                                'gas' => 'محطة غاز',
+                                'petrol' => 'محطة بترول',
+                                'fire' => 'دفاع مدني',
                             ])
                             ->native(false),
                         Forms\Components\TextInput::make('address')
@@ -59,7 +59,7 @@ class StationResource extends Resource
                             ->placeholder('وصف مختصر عن المحطة')
                             ->columnSpanFull(),
                     ])->columns(2),
-                    
+
                 Forms\Components\Section::make('الموقع الجغرافي')
                     ->description('إحداثيات المحطة على الخريطة')
                     ->icon('heroicon-o-globe-alt')
@@ -77,7 +77,7 @@ class StationResource extends Resource
                             ->step(0.000001)
                             ->placeholder('مثال: 34.4570'),
                     ])->columns(2),
-                    
+
                 Forms\Components\Section::make('معلومات إضافية')
                     ->description('الأسعار والصور')
                     ->icon('heroicon-o-currency-dollar')
@@ -112,9 +112,9 @@ class StationResource extends Resource
                 Tables\Columns\BadgeColumn::make('type')
                     ->label('النوع')
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        'gas' => '⛽ غاز',
-                        'petrol' => '🛢️ بترول',
-                        'fire' => '🚒 دفاع مدني',
+                        'gas' => 'غاز',
+                        'petrol' => 'بترول',
+                        'fire' => 'دفاع مدني',
                         default => $state,
                     })
                     ->colors([
@@ -183,7 +183,7 @@ class StationResource extends Resource
             'edit' => Pages\EditStation::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();

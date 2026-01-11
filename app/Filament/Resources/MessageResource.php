@@ -18,13 +18,13 @@ class MessageResource extends Resource
     protected static ?string $model = Message::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    
+
     protected static ?string $navigationLabel = 'الرسائل';
-    
+
     protected static ?string $modelLabel = 'رسالة';
-    
+
     protected static ?string $pluralModelLabel = 'الرسائل';
-    
+
     protected static ?string $navigationGroup = 'التواصل';
 
     public static function form(Form $form): Form
@@ -117,17 +117,17 @@ class MessageResource extends Resource
             'view' => Pages\ViewMessage::route('/{record}'),
         ];
     }
-    
+
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
     }
-    
+
     public static function getNavigationBadgeColor(): ?string
     {
         return static::getModel()::count() > 0 ? 'success' : 'gray';
     }
-    
+
     public static function canCreate(): bool
     {
         return false; // الرسائل تأتي من صفحة التواصل فقط
